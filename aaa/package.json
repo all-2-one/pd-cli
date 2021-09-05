@@ -1,0 +1,97 @@
+{
+  "name": "cli-template",
+  "version": "1.0.0",
+  "description": "脚手架模板",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack serve --config ./build/dev.ts",
+    "build": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack --config ./build/prod.ts",
+    "lint-staged:js": "npx eslint ./src/ --ext .js,.jsx,.ts,.tsx",
+    "precommit": "npm run lint-staged",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/*.{js,jsx,ts,tsx}": "npm run lint-staged:js"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuxiaozhou/cli-template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xuxiaozhou/cli-template/issues"
+  },
+  "homepage": "https://github.com/xuxiaozhou/cli-template#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/preset-env": "^7.15.4",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/node": "^16.7.10",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2",
+    "@types/react-redux": "^7.1.18",
+    "@types/react-router-dom": "^5.1.8",
+    "@types/webpack": "^5.28.0",
+    "@types/webpack-bundle-analyzer": "^4.4.1",
+    "@types/webpack-dev-server": "^4.1.0",
+    "@types/webpack-merge": "^5.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.30.0",
+    "@typescript-eslint/parser": "^4.30.0",
+    "babel-loader": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.2.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "html-webpack-plugin": "^5.3.2",
+    "husky": "^7.0.2",
+    "less": "^4.1.1",
+    "less-loader": "^10.0.1",
+    "lint-staged": "^11.1.2",
+    "style-loader": "^3.2.1",
+    "ts-loader": "^9.2.5",
+    "ts-node": "^10.2.1",
+    "tsconfig-paths": "^3.11.0",
+    "typescript": "^4.4.2",
+    "webpack": "^5.52.0",
+    "webpack-bundle-analyzer": "^4.4.2",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.1.0",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "global": "^4.4.0",
+    "immer": "^9.0.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.3.0",
+    "redux-saga": "^1.1.3"
+  }
+}
