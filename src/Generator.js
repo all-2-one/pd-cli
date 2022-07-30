@@ -3,11 +3,13 @@ const downloadGitRepo = require('download-git-repo')
 const path = require('path')
 const inquirer = require('inquirer')
 const chalk = require('chalk')
-const { getRepoList } = require('./http')
-const { getRequestUrl } = require('./url')
+
+import { getRequestUrl } from './url'
+import { getRepoList } from './http'
+import { wrapLoading } from './loading'
 
 class Generator {
-  constructor(name, targetDir) {
+  constructor (name, targetDir) {
     this.name = name
     this.targetDir = targetDir
     this.downloadGitRepo = util.promisify(downloadGitRepo);
@@ -19,14 +21,13 @@ class Generator {
     if (!repoList) {
       return
     }
-
+    
     const repoNames = repoList.map(item => item.name).filter(name => name.indexOf('template') > -1)
-
     const { repo } = await inquirer.prompt({
       name: 'repo',
       type: 'list',
       choices: repoNames,
-      message: 'Please choose a template to create project'
+      message: '请选择模板'
     })
 
     return repo
@@ -39,7 +40,6 @@ class Generator {
 
   async download(repo) {
     try {
-
       await wrapLoading(
         this.downloadGitRepo,
         'waiting download template',
@@ -57,25 +57,4 @@ class Generator {
   }
 }
 
-module.exports = Generator
-
-const ora = require('ora')
-
-// 添加加载动画
-async function wrapLoading(fn, message, ...args) {
-  // 使用 ora 初始化，传入提示信息 message
-  const spinner = ora(message);
-  // 开始加载动画
-  spinner.start();
-
-  try {
-    // 执行传入方法 fn
-    const result = await fn(...args);
-    // 状态为修改为成功
-    spinner.succeed();
-    return result;
-  } catch (error) {
-    // 状态为修改为失败
-    spinner.fail('Request failed, refetch ...')
-  }
-}
+export default Generator

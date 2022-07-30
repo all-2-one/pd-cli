@@ -1,9 +1,9 @@
 const path = require('path')
 const inquirer = require('inquirer')
 const fs = require('fs-extra')
-const Generator = require('./Generator')
+import Generator from './Generator'
 
-module.exports = async (name, options) => {
+const create = async (name, options) => {
   // 当前命令行选择的目录
   const cwd = process.cwd();
   // 需要创建的目录地址
@@ -50,3 +50,5 @@ module.exports = async (name, options) => {
 
   generator.create()
 }
+
+export default create
