@@ -11,18 +11,13 @@ var program__default = /*#__PURE__*/_interopDefaultLegacy(program);
 var axios__default = /*#__PURE__*/_interopDefaultLegacy(axios);
 var ora__default = /*#__PURE__*/_interopDefaultLegacy(ora);
 
-var version = "1.0.0";
+var version = "1.0.1";
 
 const orgs = 'all-2-one';
 
 const repoListUrl = `https://api.github.com/orgs/${orgs}/repos`;
 const getRequestUrl = repo => `${orgs}/${repo}#main`;
 // https://api.github.com/repos/all-2-one/react-template/tags
-
-// export default {
-//   repoListUrl,
-//   getRequestUrl
-// }
 
 axios__default["default"].interceptors.response.use(res => {
   return res.data;

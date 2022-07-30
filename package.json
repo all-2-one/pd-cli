@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xuxiaozhou/pd-cli.git"
+    "url": "git+https://github.com/all-2-one/pd-cli"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/xuxiaozhou/pd-cli/issues"
+    "url": "https://github.com/all-2-one/pd-cli/issues"
   },
-  "homepage": "https://github.com/xuxiaozhou/pd-cli#readme",
+  "homepage": "https://github.com/all-2-one/pd-cli#readme",
   "dependencies": {
     "axios": "^0.21.3",
     "chalk": "^4.1.2",
